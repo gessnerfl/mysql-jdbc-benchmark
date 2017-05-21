@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 public class Benchmark {
     private final BenchmarkConfigurationProperties benchmarkConfigurationProperties;
     private final BenchmarkDataService benchmarkDataService;
+    private final ReportCreator reportCreator;
     private final Logger logger;
 
     @Autowired
-    public Benchmark(BenchmarkConfigurationProperties benchmarkConfigurationProperties, BenchmarkDataService benchmarkDataService, Logger logger) {
+    public Benchmark(BenchmarkConfigurationProperties benchmarkConfigurationProperties, BenchmarkDataService benchmarkDataService, ReportCreator reportCreator, Logger logger) {
         this.benchmarkConfigurationProperties = benchmarkConfigurationProperties;
         this.benchmarkDataService = benchmarkDataService;
+        this.reportCreator = reportCreator;
         this.logger = logger;
     }
 
@@ -33,6 +35,7 @@ public class Benchmark {
         }
         benchmarkReportData.endBenchmark();
         logger.info("Benchmark finished within {}ms", benchmarkReportData.getDuration().toMillis());
+        reportCreator.writeReport(benchmarkReportData);
     }
 
     private IterationReport runIteration(int iteration, int numberOfInserts) {

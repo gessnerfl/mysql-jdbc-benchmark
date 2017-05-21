@@ -18,8 +18,16 @@ public class IterationReport {
         this.start = LocalDateTime.now();
     }
 
-    public void endIteration(){
-        end = LocalDateTime.now();
+    public int getIteration() {
+        return iteration;
+    }
+
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
     }
 
     public Duration getDuration(){
@@ -27,6 +35,10 @@ public class IterationReport {
             throw new IllegalStateException("Iteration not finished yet");
         }
         return Duration.between(start, end);
+    }
+
+    public void endIteration(){
+        end = LocalDateTime.now();
     }
 
 }

@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class BenchmarkReportData {
     public static BenchmarkReportData startBenchmarkWith(int numberOfIterations, int insertsPerIteration){
@@ -38,8 +39,8 @@ public class BenchmarkReportData {
         return end;
     }
 
-    public List<IterationReport> getIterationReports() {
-        return iterationReports;
+    public Stream<IterationReport> getIterationReports() {
+        return iterationReports.stream();
     }
 
     public void addIteration(IterationReport iterationReport) {
@@ -57,7 +58,7 @@ public class BenchmarkReportData {
         return Duration.between(start, end);
     }
 
-    public Duration avarageDuragionPerIteration(){
+    public Duration getAverageDurationPerIteration(){
         Duration duration = getDuration();
         return duration.dividedBy(numberOfIterations);
     }
