@@ -1,7 +1,30 @@
 # mysql-jdbc-benchmark
-Simple MySQL JDBC performance benchmark
+a Simple MySQL JDBC benchmark to test insert + delete performance of a MySQL system.
+The benchmark will run n iterations where it will insert m records in a test database.
+Afterwards the database table will be cleaned (all records will be deleted in a single 
+statement) to get clean environment for each execution
+ 
+The number of iterations (n) and the number of records which will be inserted (m) can be 
+configured.
 
-# Tune Docker OSX
+The tool will create a report which will summarize the total duration and the average duration
+to insert m records. The report will also contain a report for each iteration.
+
+## Configuration
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/temp   #JDBC url of the datasource
+spring.datasource.username=root                          #User to connect to the database
+spring.datasource.password=Test1234                      #Password of the database user
+
+de.gessnerfl.docker.mysqlBenchmark.iterations=5                #The number of iterations (n) to be executed
+de.gessnerfl.docker.mysqlBenchmark.insertsPerIteration=100000  #The number of inserts per iteration (m)
+```
+
+For more details regarding the configuration of the JDBC datasource please consult the spring 
+boot documentation
+
+## Tune Docker OSX
 
 Set sync mode to none:
 ```
