@@ -20,7 +20,7 @@ public class BenchmarkDataService {
     }
 
     public int clearDatabase() {
-        return jdbcTemplate.update("DELETE FROM benachmark_data");
+        return jdbcTemplate.update("DELETE FROM benchmark_data");
     }
 
     public void insertRecords(int numberOfInserts) {
@@ -36,7 +36,7 @@ public class BenchmarkDataService {
         int numeric1 = 2_000_000 + i;
         int numeric2 = 3_000_000 + i;
         Timestamp createTime = new Timestamp(System.currentTimeMillis());
-        jdbcTemplate.update("INSERT INTO benachmark_data (id, string1, string2, numeric1, numeric2, create_time) VALUES (?,?,?,?,?,?)", id, string1, string2, numeric1, numeric2, createTime);
+        jdbcTemplate.update("INSERT INTO benchmark_data (id, string1, string2, numeric1, numeric2, create_time) VALUES (?,?,?,?,?,?)", id, string1, string2, numeric1, numeric2, createTime);
     }
 
 }

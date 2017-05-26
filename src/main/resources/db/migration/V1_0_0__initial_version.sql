@@ -1,4 +1,4 @@
-CREATE TABLE benachmark_data (
+CREATE TABLE benchmark_data (
 id BIGINT PRIMARY KEY,
 string1 VARCHAR(255) NOT NULL,
 string2 VARCHAR(255) NOT NULL,

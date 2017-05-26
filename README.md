@@ -25,6 +25,7 @@ For more details regarding the configuration of the JDBC datasource please consu
 boot documentation
 
 ## Tune Docker OSX
+From: https://github.com/docker/for-mac/issues/668
 
 Set sync mode to none:
 ```
